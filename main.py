@@ -1,6 +1,13 @@
 from packing_item import PackingItem
 
 def main():
+    # Ask the user about the trip
+    days = input("How many days is your trip: ")
+    weather = input("What will the weather be like on your trip: ")
+
+    print(f"\nTrip length: {days} days")
+    print(f"Expected weather: {weather}\n")
+
     # Create packing list items
     shirt = PackingItem("Shirt", 3)
     charger = PackingItem("Phone Charger", 1)
