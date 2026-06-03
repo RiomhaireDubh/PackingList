@@ -11,56 +11,60 @@ def main():
     print(f"Length of trip: {trip_length} days")
     print(f"Mode of travel: {travel_mode}\n")
 
-    # Create packing list items (clothing + bathroom necessities + essentials)
-    shirt = PackingItem("Shirt", 3)
-    pants = PackingItem("Pants", 2)
-    socks = PackingItem("Socks", 4)
-    underwear = PackingItem("Underwear", 4)
-    jacket = PackingItem("Jacket", 1)
+    # Base packing list with weights (in pounds)
+    items = [
+        PackingItem("Shirt", 3, 0.4),
+        PackingItem("Pants", 2, 1.0),
+        PackingItem("Socks", 4, 0.1),
+        PackingItem("Underwear", 4, 0.1),
+        PackingItem("Jacket", 1, 1.5),
 
-    toothbrush = PackingItem("Toothbrush", 1)
-    toothpaste = PackingItem("Toothpaste", 1)
-    deodorant = PackingItem("Deodorant", 1)
-    shampoo = PackingItem("Travel Shampoo", 1)
-    soap = PackingItem("Soap", 1)
+        PackingItem("Toothbrush", 1, 0.1),
+        PackingItem("Toothpaste", 1, 0.2),
+        PackingItem("Deodorant", 1, 0.3),
+        PackingItem("Travel Shampoo", 1, 0.4),
+        PackingItem("Soap", 1, 0.2),
 
-    charger = PackingItem("Phone Charger", 1)
-    snacks = PackingItem("Snacks", 5)
-    water_bottle = PackingItem("Water Bottle", 1)
+        PackingItem("Phone Charger", 1, 0.2),
+        PackingItem("Snacks", 5, 0.1),
+        PackingItem("Water Bottle", 1, 0.5),
+    ]
+
+    # Add survival items if camping
+    if trip_type.lower() == "camping":
+        print("Camping trip detected — adding survival gear...\n")
+        items.extend([
+            PackingItem("Tent", 1, 5.0),
+            PackingItem("Sleeping Bag", 1, 3.0),
+            PackingItem("Fire Starter", 1, 0.2),
+            PackingItem("Pocket Knife", 1, 0.3),
+            PackingItem("Flashlight", 1, 0.4),
+            PackingItem("Extra Batteries", 4, 0.1),
+            PackingItem("First Aid Kit", 1, 1.0),
+            PackingItem("Compass", 1, 0.1),
+            PackingItem("Map", 1, 0.05),
+            PackingItem("Rope / Paracord", 1, 0.7),
+            PackingItem("Water Purification Tablets", 1, 0.1),
+            PackingItem("Cooking Pot", 1, 1.2),
+            PackingItem("Matches", 1, 0.05),
+            PackingItem("Emergency Blanket", 1, 0.2),
+        ])
 
     print("Initial packing list:")
-    print(shirt)
-    print(pants)
-    print(socks)
-    print(underwear)
-    print(jacket)
-    print(toothbrush)
-    print(toothpaste)
-    print(deodorant)
-    print(shampoo)
-    print(soap)
-    print(charger)
-    print(snacks)
-    print(water_bottle)
+    for item in items:
+        print(item)
 
     # Update values using the property setters
-    shirt.quantity = 4
-    snacks.name = "Trail Mix"
+    items[0].quantity = 4  # Increase shirt quantity
+    items[11].name = "Trail Mix"  # Rename snacks
 
     print("\nUpdated packing list:")
-    print(shirt)
-    print(pants)
-    print(socks)
-    print(underwear)
-    print(jacket)
-    print(toothbrush)
-    print(toothpaste)
-    print(deodorant)
-    print(shampoo)
-    print(soap)
-    print(charger)
-    print(water_bottle)
-    print(snacks)
+    for item in items:
+        print(item)
+
+    # Calculate total weight
+    total_weight = sum(item.total_weight() for item in items)
+    print(f"\nTotal pack weight: {total_weight:.2f} lbs")
 
 if __name__ == "__main__":
     main()
