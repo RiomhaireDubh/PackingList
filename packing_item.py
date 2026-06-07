@@ -2,7 +2,8 @@ class PackingItem:
     def __init__(self, name, quantity=1, weight=0):
         self._name = name
         self._quantity = quantity
-        self._weight = weight  # weight of ONE unit
+        self._weight = weight
+        self._packed = False  # NEW: checkbox state
 
     @property
     def name(self):
@@ -37,8 +38,16 @@ class PackingItem:
         else:
             print("Weight must be a non-negative number.")
 
+    @property
+    def packed(self):
+        return self._packed
+
+    def toggle_packed(self):
+        self._packed = not self._packed
+
     def total_weight(self):
         return self._quantity * self._weight
 
     def __str__(self):
-        return f"{self._quantity} × {self._name} ({self.total_weight():.2f} lbs)"
+        checkbox = "[x]" if self._packed else "[ ]"
+        return f"{checkbox} {self._quantity} × {self._name} ({self.total_weight():.2f} lbs)"
