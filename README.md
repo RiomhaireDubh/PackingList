@@ -3,5 +3,5 @@ This program helps you compile a suitable packing list for a variety of trip typ
 ---
 
 ## Videos
-- [Code Demo](https://www.youtube.com/watch?v=...)
+- [Code Demo](https://youtu.be/6zH0xry8nkk)
 - [Code Walkthrough](https://www.youtube.com/watch?v=...)
