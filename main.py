@@ -1,3 +1,11 @@
+# ------------------------------------------------------------
+# PROGRAM: main.py
+# PURPOSE: Packing list generator
+# AUTHOR:  Brian Lewis
+# DATE:    06/07/2026
+# ------------------------------------------------------------
+
+
 from packing_item import PackingItem
 
 # -----------------------------------------
